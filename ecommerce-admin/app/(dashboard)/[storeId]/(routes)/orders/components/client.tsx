@@ -1,14 +1,10 @@
 "use client";
 
 import React from "react";
-import { Plus } from "lucide-react";
-import { useParams, useRouter } from "next/navigation";
 
-import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
 import { Separator } from "@/components/ui/separator";
 import { DataTable } from "@/components/ui/data-table";
-import { ApiList } from "@/components/ui/api-list";
 
 import { OrderColumn, columns } from "./columns";
 
