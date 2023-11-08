@@ -39,7 +39,7 @@ interface StoreSwitcherProps extends PopoverTriggerProps {
 export default function StoreSwitcher({
     className,
     items = [],
-}: StoreSwitcherProps) {
+}: Readonly<StoreSwitcherProps>) {
     const storeModal = useStoreModal();
     const params = useParams();
     const router = useRouter();
@@ -64,12 +64,13 @@ export default function StoreSwitcher({
         <Popover open={open} onOpenChange={setOpen}>
             <PopoverTrigger asChild>
                 <Button
+                    onClick={() => {}}
                     variant="outline"
                     size="sm"
                     role="combobox"
                     aria-expanded={open}
                     aria-label="Select a store"
-                    className={cn("w-[200px] justify-between")}
+                    className={cn("w-[200px] justify-between", className)}
                 >
                     <StoreIcon className="mr-2 h-4 w-4" />
                     {currentStore?.label}
