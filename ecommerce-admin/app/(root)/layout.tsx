@@ -5,9 +5,9 @@ import prismadb from "@/lib/prismadb";
 
 export default async function SetupLayout({
     children,
-}: {
+}: Readonly<{
     children: React.ReactNode;
-}) {
+}>) {
     const { userId } = auth();
 
     if (!userId) {
