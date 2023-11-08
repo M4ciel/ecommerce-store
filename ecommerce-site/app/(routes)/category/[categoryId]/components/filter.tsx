@@ -4,8 +4,9 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 import { Color, Size } from "@/types";
 import queryString from "query-string";
-import Button from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { Toggle } from "@/components/ui/toggle";
 
 interface FilterProps {
     data: (Size | Color)[];
@@ -48,16 +49,12 @@ const Filter: React.FC<FilterProps> = ({ data, name, valueKey }) => {
             <div className="flex flex-wrap gap-2">
                 {data.map((filter) => (
                     <div key={filter.id} className="flex items-center">
-                        <Button
-                            className={cn(
-                                "rounded-md text-sm text-gray-800 p-2 bg-white border border-gray-800",
-                                selectedValue === filter.id &&
-                                    "bg-black text-white"
-                            )}
+                        <Toggle
+                            variant="outline"
                             onClick={() => onClick(filter.id)}
                         >
                             {filter.name}
-                        </Button>
+                        </Toggle>
                     </div>
                 ))}
             </div>

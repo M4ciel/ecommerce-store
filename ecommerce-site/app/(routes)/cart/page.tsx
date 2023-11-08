@@ -5,6 +5,7 @@ import Container from "@/components/ui/container";
 import useCart from "@/hooks/use-cart";
 import { useEffect, useState } from "react";
 import Summary from "./components/summary";
+import Loading from "./loading";
 
 const CartPage = () => {
     const cart = useCart();
@@ -15,8 +16,9 @@ const CartPage = () => {
     }, []);
 
     if (!isMounted) {
-        return null;
+        return <Loading />;
     }
+
     return (
         <div className="bg-white">
             <Container>
