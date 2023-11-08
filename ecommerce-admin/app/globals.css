@@ -72,6 +72,10 @@ body,
     }
 }
 
+.cl-internal-12qvck8 {
+    display: none;
+}
+
 @layer base {
     * {
         @apply border-border;
