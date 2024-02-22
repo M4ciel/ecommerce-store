@@ -1,0 +1,46 @@
+version: '3'
+services:
+  # Serviço para o frontend ecommerce-admin
+  ecommerce-admin:
+    build:
+      context: ./ecommerce-admin
+      dockerfile: dockerfile
+    ports:
+      - "3000:3000"
+
+  # Serviço para o frontend ecommerce-site
+  ecommerce-site:
+    build:
+      context: ./ecommerce-site
+      dockerfile: dockerfile
+    ports:
+      - "3001:3001"
+
+  # Serviço para o backend ecommerce-api
+  ecommerce-api:
+    build:
+      context: ./ecommerce-api
+      dockerfile: dockerfile
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./ecommerce-api/.env
+    depends_on:
+      - db
+
+  # Serviço para o banco de dados MySQL
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root_password'
+      MYSQL_DATABASE: 'ecommerce-store'
+      MYSQL_USER: 'ecommerce-user'
+      MYSQL_PASSWORD: 'ecommerce-password'
+    ports:
+      - "3306:3306"
+    volumes:
+      - my-db:/var/lib/mysql
+
+volumes:
+  my-db:
